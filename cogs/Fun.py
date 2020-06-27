@@ -19,29 +19,29 @@ class Fun_Commands(commands.Cog):
 
     @commands.command(aliases=["aboutuser", "about_user", "userinfo", "user_info", "whoisme"])
     async def whois(self, ctx, member: discord.Member = None):
-        if member == None:
-            member = ctx.author
-        elif member !=None:
-            embed = discord.Embed(
+        member = member if member else ctx.author
+        embed = discord.Embed(
 
                 colour=member.colour,
                 timestamp=ctx.message.created_at
 
             )
 
-            roles = [role for role in member.roles]
+        roles = [role for role in member.roles]
 
-            embed.set_author(name=f"User Info - {member}")
-            embed.set_thumbnail(url=member.avatar_url)
-            embed.set_footer(text=f"Requested By {ctx.author}", icon_url=ctx.author.avatar_url)
+        lenroles = len(roles) - 1
 
-            embed.add_field(name="User Name", value=member.name, inline=False)
-            embed.add_field(name="ID", value=member.id, inline=False)
-            embed.add_field(name="Account Created", value=member.created_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"), inline=False)
-            embed.add_field(name="Member Joined", value=member.joined_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"), inline=False)
-            embed.add_field(name=f"Roles ({len(roles)})", value=" ".join([r.mention for r in member.roles if r != ctx.guild.default_role]), inline=False)
-            embed.add_field(name="Top Role", value=member.top_role.mention, inline=False)
-            embed.add_field(name="Bot?", value=member.bot, inline=False)
+        embed.set_author(name=f"User Info - {member}")
+        embed.set_thumbnail(url=member.avatar_url)
+        embed.set_footer(text=f"Requested By {ctx.author}", icon_url=ctx.author.avatar_url)
+
+        embed.add_field(name="User Name", value=member.name, inline=False)
+        embed.add_field(name="ID", value=member.id, inline=False)
+        embed.add_field(name="Account Created", value=member.created_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"), inline=False)
+        embed.add_field(name="Member Joined", value=member.joined_at.strftime("%a, %#d %B %Y, %I:%M %p UTC"), inline=False)
+        embed.add_field(name=f"Roles ({lenroles})", value=" ".join([r.mention for r in member.roles if r != ctx.guild.default_role]), inline=False)
+        embed.add_field(name="Top Role", value=member.top_role.mention, inline=False)
+        embed.add_field(name="Bot?", value=member.bot, inline=False)
 
         await ctx.send(embed=embed)
 
@@ -69,7 +69,6 @@ class Fun_Commands(commands.Cog):
 
     @commands.command(aliases=["stix", "keys"])
     async def sticks(self, ctx, *, text):
-        if ctx.guild.id != 491772737233092629: return
         await ctx.message.delete()
         await ctx.send(f"{text} get on the sticks")
 
@@ -80,23 +79,22 @@ class Fun_Commands(commands.Cog):
         if member.id == 693661517824131172:
             await ctx.send("You cant rick roll the master rick roller you peasant!")
         else:
-            await ctx.send(f"You just got rick rolled {member.mention}!",
-                        file=discord.File(r"File Path"))
+            await ctx.send(f"You just got rick rolled {member.mention}!", file=discord.File(r"The File"))
 
 
     @commands.command(aliases=["memes", "memer", "dankmeme", "dankmemer"])
     async def meme(self, ctx):
-        await ctx.send(file=discord.File(r"File Path"))
+        await ctx.send(file=discord.File(r"The File"))
 
 
     @commands.command(aliases=["basketballgame", "trey", "basket", "mynameistrey"])
     async def basketball(self, ctx):
-        await ctx.send(file=discord.File(r"File Path"))
+        await ctx.send(file=discord.File(r"The File"))
 
 
     @commands.command(aliases=["Ice"])
     async def ice(self, ctx):
-        await ctx.send(f"You have been iced by {ctx.author}", file=discord.File(r"File Path"))
+        await ctx.send(f"You have been iced by {ctx.author}", file=discord.File(r"The File"))
 
 
     @commands.command(aliases=["pop", "wrapper", "popper", "wrapperpop", "wrapperpopper", "bw", "bubble", "wrap"])
