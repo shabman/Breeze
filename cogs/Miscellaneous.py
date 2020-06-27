@@ -35,9 +35,6 @@ class Misc_Commands(commands.Cog):
         await ctx.send(embed=embed)
 
 
-
-
-
     @commands.command(aliases=["invitebot"])
     async def invite(self, ctx):
         embed = discord.Embed(
@@ -47,11 +44,6 @@ class Misc_Commands(commands.Cog):
         embed.add_field(name="Invite me to your server!",
                         value="[Invite Link](https://discord.com/oauth2/authorize?client_id=709775179303223387&permissions=8&scope=bot)")
         await ctx.send(embed=embed)
-
-
-    @commands.command(aliases=["botowner"])
-    async def owner(self, ctx):
-        await ctx.send("This bot was made with love by Code Name Cookie#7134, Purple Guy#1234, Overdrive#3107, Kaleb#6450, and Dutchy#6127")
 
 
     @commands.command()
