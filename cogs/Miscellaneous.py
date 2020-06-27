@@ -17,6 +17,23 @@ class Misc_Commands(commands.Cog):
         self.client = client
 
 
+    @commands.command(aliases=["feedback", "suggestion"])
+    async def suggest(self, ctx, *, content): 
+        await ctx.message.delete()
+        async with aiohttp.ClientSession() as session:
+            webhook = Webhook.from_url('The Webhook URL', adapter=AsyncWebhookAdapter(session))
+            await webhook.send(f"Suggestion - {content}", username="Suggestion")
+
+
+    @commands.command(aliases=["reportbug", "sendbug", "bugreport"])
+    async def bug(self, ctx, *, content): 
+        await ctx.message.delete()
+        async with aiohttp.ClientSession() as session:
+            webhook = Webhook.from_url('The Webhook URL', adapter=AsyncWebhookAdapter(session))
+            await webhook.send(f"Bug - {content}", username="Bug Found!")
+
+
+
     @commands.command(aliases=["enterqueue", "queueenter"])
     async def queue(self, ctx, *, text):
         embed = discord.Embed(
@@ -25,7 +42,6 @@ class Misc_Commands(commands.Cog):
 
         )
 
-        embed.set_footer(text="The Queue")
         embed.set_author(name=f"{ctx.author}")
         embed.add_field(name="Server", value=f"{ctx.guild}", inline=False)
         embed.add_field(name="User", value=f"{ctx.author}", inline=False)
@@ -64,7 +80,6 @@ class Misc_Commands(commands.Cog):
 
     @commands.command(aliases=["dono", "donation", "paypal", "venmo", "cashapp"])
     async def donate(self, ctx):
-        print("Someone requested the dono link!")
         embed = discord.Embed(
 
         )
