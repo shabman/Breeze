@@ -22,18 +22,22 @@ token = "The Token"
 # Get Prefix
 
 
-async def get_prefix(bot, message):
+async def get_prefix(client, message):
+    if not message.guild:
+        return commands.when_mentioned_or('s?')(client, message)
     with open('prefixes.json', 'r') as f:
         prefixes = json.load(f)
-
-        prefix = prefixes[str(message.guild.id)]
-    return commands.when_mentioned_or(prefix)(client, message)
-
+    if str(message.guild.id) not in prefixes:
+        return commands.when_mentioned_or('s?')(client,message)
+    return prefixes[str(message.guild.id)]
+ 
 
 # Define Bot
 
 
 client = commands.Bot(command_prefix=get_prefix)
+client.ready = False
+client.prefixes = {}
 
 
 # Status Cycle
