@@ -16,9 +16,7 @@ import asyncio
 # Token
 
 
-token = "NzA5Nzc1MTc5MzAzMjIzMzg3.XvWgIQ.6dNRafY_3XzEJjia6IwAZACMKrg"
-# removes help command
-
+token = "The Token"
 
 
 # Get Prefix
@@ -71,7 +69,6 @@ async def on_ready():
 @client.event
 async def on_guild_join(guild):
     print(f"""Someone invited Breeze to their server!
-Server Name - {guild.name}
 Breeze is now in {len(client.guilds)} servers!""")
     with open('prefixes.json', 'r') as f:
         prefixes = json.load(f)
@@ -85,7 +82,6 @@ Breeze is now in {len(client.guilds)} servers!""")
 @client.event
 async def on_guild_remove(guild):
     print(f"""Someone removed Breeze from their server
-Server Name - {guild.name}
 Breeze is now in {len(client.guilds)} servers :(""")
 
     with open('prefixes.json', 'r') as f:
