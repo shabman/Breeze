@@ -81,23 +81,22 @@ class Fun_Commands(commands.Cog):
             await ctx.send("You cant rick roll the master rick roller you peasant!")
         else:
             await ctx.send(f"You just got rick rolled {member.mention}!",
-                        file=discord.File(r"C:\Users\asher\OneDrive\Pictures\Camera Roll\Get Ricked.mp4"))
+                        file=discord.File(r"File Path"))
 
 
     @commands.command(aliases=["memes", "memer", "dankmeme", "dankmemer"])
     async def meme(self, ctx):
-        await ctx.send(file=discord.File(
-            r"C:\Users\asher\OneDrive\Pictures\Camera Roll\Meme.mp4"))
+        await ctx.send(file=discord.File(r"File Path"))
 
 
     @commands.command(aliases=["basketballgame", "trey", "basket", "mynameistrey"])
     async def basketball(self, ctx):
-        await ctx.send(file=discord.File(r"C:\Users\asher\OneDrive\Pictures\Camera Roll\Basketball Game.mp44"))
+        await ctx.send(file=discord.File(r"File Path"))
 
 
     @commands.command(aliases=["Ice"])
     async def ice(self, ctx):
-        await ctx.send(f"You have been iced by {ctx.author}", file=discord.File(r"C:\Users\asher\OneDrive\Pictures\Camera Roll\Ice Ice Baby.png"))
+        await ctx.send(f"You have been iced by {ctx.author}", file=discord.File(r"File Path"))
 
 
     @commands.command(aliases=["pop", "wrapper", "popper", "wrapperpop", "wrapperpopper", "bw", "bubble", "wrap"])
